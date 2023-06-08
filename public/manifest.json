@@ -1,0 +1,8 @@
+{
+  "short_name": "Kyle's Portfolio",
+  "name": "kyle Duval's Portfolio Site",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
