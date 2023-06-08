@@ -1,32 +1,32 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFloppyDisk,
   faPenToSquare,
-} from "@fortawesome/free-regular-svg-icons";
-import { useSelector, useDispatch } from "react-redux";
-import { selectView, openEdit, openDetails } from "../../store/detailsSlice";
-import * as config from "../../config";
+} from '@fortawesome/free-regular-svg-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectView, openEdit, openDetails } from '../../store/detailsSlice';
+import * as config from '../../config';
 import {
   selectActive,
   submitToDo,
   deleteToDo,
   changeActive,
   editToDo,
-} from "../../store/toDoSlice";
-import Select from "react-select";
-import { useState } from "react";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+} from '../../store/toDoSlice';
+import Select from 'react-select';
+import { useState } from 'react';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function formatPriority(priority) {
   switch (priority) {
     case config.HIGH_PRIORITY:
-      return "High";
+      return 'High';
     case config.MID_PRIORITY:
-      return "Normal";
+      return 'Normal';
     case config.LOW_PRIORITY:
-      return "Low";
+      return 'Low';
     default:
-      return "Normal";
+      return 'Normal';
   }
 }
 
@@ -63,9 +63,9 @@ function EditTask({ view }) {
 
   const getInputDate = (dateStr) => {
     const date = new Date(dateStr);
-    return `${date.getFullYear()}-${("" + (date.getMonth() + 1)).padStart(
+    return `${date.getFullYear()}-${('' + (date.getMonth() + 1)).padStart(
       2,
-      "0"
+      '0'
     )}-${date.getDate()}`;
   };
 
@@ -86,8 +86,8 @@ function EditTask({ view }) {
   return (
     <>
       <h3 className="text-center">
-        <FontAwesomeIcon icon={faPenToSquare} size="sm" />{" "}
-        {view === config.TASK_CREATE ? "Create" : "Edit"} Task
+        <FontAwesomeIcon icon={faPenToSquare} size="sm" />{' '}
+        {view === config.TASK_CREATE ? 'Create' : 'Edit'} Task
       </h3>
       <form onSubmit={handleSubmit}>
         <div className="form-part">
@@ -97,7 +97,7 @@ function EditTask({ view }) {
             type="text"
             name="name"
             placeholder="Wash the Dishes"
-            defaultValue={task?.name ? task.name : ""}
+            defaultValue={task?.name ? task.name : ''}
             required
           ></input>
         </div>
@@ -107,15 +107,15 @@ function EditTask({ view }) {
             id="date"
             type="date"
             name="date"
-            defaultValue={task?.date ? getInputDate(task.date) : ""}
+            defaultValue={task?.date ? getInputDate(task.date) : ''}
           ></input>
           <Select
             options={prioritySelectOptions}
-            className="col-3"
+            className="col"
             defaultValue={
               task?.priority
                 ? { value: task.priority, label: formatPriority(task.priority) }
-                : { value: "", label: "Priority" }
+                : { value: '', label: 'Priority' }
             }
             onChange={handlePriorityChange}
           />
@@ -127,7 +127,7 @@ function EditTask({ view }) {
             type="text"
             name="notes"
             placeholder="Make sure you use the blue dish soap"
-            defaultValue={task?.notes ? task.notes : ""}
+            defaultValue={task?.notes ? task.notes : ''}
           ></textarea>
         </div>
         <button
@@ -168,9 +168,9 @@ function TaskDetails() {
         <>
           <h5>{task.name}</h5>
           <div className="task-information">
-            {task.date ? <p>Date: {task.date}</p> : ""}
+            {task.date ? <p>Date: {task.date}</p> : ''}
             <p>Priority: {formatPriority(task.priority)}</p>
-            {task.notes ? <p>Notes: {task.notes}</p> : ""}
+            {task.notes ? <p>Notes: {task.notes}</p> : ''}
           </div>
 
           <div id="task-buttons">
@@ -191,7 +191,7 @@ function TaskDetails() {
           </div>
         </>
       ) : (
-        ""
+        ''
       )}
     </div>
   );
@@ -206,7 +206,7 @@ export default function TaskSpecifics() {
       ) : view === config.TASK_EDIT || view === config.TASK_CREATE ? (
         <EditTask view={view} />
       ) : (
-        ""
+        ''
       )}
     </div>
   );

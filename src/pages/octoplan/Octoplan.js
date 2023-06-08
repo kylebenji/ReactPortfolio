@@ -8,13 +8,15 @@ import store from './store/store.js';
 function Octoplan() {
   return (
     <Provider store={store}>
-      <div className="octoplan container">
-        <Header />
-        <div className="row gx-3">
-          <ToDoList />
-          <Information />
+      <div className="octoplan">
+        <div className="container">
+          <Header />
+          <div className="row gx-3">
+            <ToDoList />
+            <Information />
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </Provider>
   );
